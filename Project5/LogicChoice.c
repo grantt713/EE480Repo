@@ -41,6 +41,11 @@ void writeGPIO(char filename[], char value[]){
 
 
 int main(){
+        printf("Please select a run command from:\n");
+        printf("majority, minority, comparator\n");
+        char mode[20];
+        scanf("%s", mode);
+        
     if(strcmp(mode,"majority")==0){	// conditional to check for string to execute majority function
         writeGPIOi(GPIO_SYSFS "export", MajIOs[0]);     // export each of the GPIOs
         writeGPIOi(GPIO_SYSFS "export", MajIOs[1]);
@@ -51,10 +56,10 @@ int main(){
         writeGPIO(GPIO22_PATH "direction", "out");
         
         int storage[3];                                 // gives place for user to store their values
-        printf("Please enter 3 bit values of "1" or "0".\n);
+        printf("Please enter 3 bit values of '1' or '0'. \n");
         for(int i=0; i<=2; i++){                        // traverses array to accept user input
             scanf("%d", &storage[i]);
-            while((storage[i]!=1) || (storage[i]!=0)){   // only accepts HIGH or LOW values
+            while((storage[i]!=1) && (storage[i]!=0)){   // only accepts HIGH or LOW values
                 printf("Try that bit again.\n");
                 scanf("%d", &storage[i]);       // retake user input
             }
@@ -96,10 +101,10 @@ int main(){
         writeGPIO(GPIO26_PATH "direction", "out");
         
         int storage[3];                                 // gives place for user to store their values
-        printf("Please enter 3 bit values of "1" or "0".\n);
+        printf("Please enter 3 bit values of '1' or '0'. \n");
         for(int i=0; i<=2; i++){                        // traverses array to accept user input
             scanf("%d", &storage[i]);
-            while((storage[i]!=1) || (storage[i]!=0)){   // only accepts HIGH or LOW values
+            while((storage[i]!=1) && (storage[i]!=0)){   // only accepts HIGH or LOW values
                 printf("Try that bit again.\n");
                 scanf("%d", &storage[i]);       // retake user input
             }
@@ -130,12 +135,12 @@ int main(){
     
     
     if(strcmp(mode,"comparator")==0){	// conditional to check for string
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[0]);
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[1]);
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[2]);
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[3]);
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[4]);
-        writeGPIOi(GPIO_SYSFS "export", MinIOs[5]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[0]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[1]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[2]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[3]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[4]);
+        writeGPIOi(GPIO_SYSFS "export", CompIOs[5]);
         usleep(100000);                  // sleep for 100ms
         writeGPIO(GPIO18_PATH "direction", "out");
         writeGPIO(GPIO23_PATH "direction", "out");
@@ -146,20 +151,20 @@ int main(){
         
         
         int storage[3];                                 // gives place for user to store their values
-        printf("Please enter 3 bit values of "1" or "0".\n);
+        printf("Please enter 3 bit values of '1' or '0'. \n");
         for(int i=0; i<=2; i++){                        // traverses array to accept user input
             scanf("%d", &storage[i]);
-            while((storage[i]!=1) || (storage[i]!=0)){   // only accepts HIGH or LOW values
+            while((storage[i]!=1) && (storage[i]!=0)){   // only accepts HIGH or LOW values
                 printf("Try that bit again.\n");
                 scanf("%d", &storage[i]);       // retake user input
             }
         }
         
         int storage2[3];                                 // gives place for user to store their values
-        printf("Please enter 3 more bit values of "1" or "0".\n);
+        printf("Please enter 3 more bit values of '1' or '0'.\n");
         for(int i=0; i<=2; i++){                        // traverses array to accept user input
             scanf("%d", &storage2[i]);
-            while((storage2[i]!=1) || (storage2[i]!=0)){   // only accepts HIGH or LOW values
+            while((storage2[i]!=1) && (storage2[i]!=0)){   // only accepts HIGH or LOW values
                 printf("Try that bit again.\n");
                 scanf("%d", &storage2[i]);       // retake user input
             }
@@ -206,5 +211,8 @@ int main(){
         
         
     }
-        
+    
+        else{
+         printf("Invalid Command. Run Again.\n");   
+        }
 }
