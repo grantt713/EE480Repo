@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 
 # Set pin 11 as an output, and set servo1 as pin 11 as PWM
 GPIO.setup(17,GPIO.OUT)
-servo1 = GPIO.PWM(17,0.3) # Note 11 is pin, 50 = 50Hz pulse
+servo1 = GPIO.PWM(17,5) # Note 11 is pin, 50 = 50Hz pulse
 
 #start PWM running, but with value of 0 (pulse off)
 servo1.start(0)
@@ -22,7 +22,7 @@ duty = 1
 servo1.ChangeDutyCycle(duty)
 
 # Wait a couple of seconds
-time.sleep(60)
+time.sleep(9)
 
 
 #Clean things up at the end

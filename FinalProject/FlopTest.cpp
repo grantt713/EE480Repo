@@ -14,12 +14,12 @@ int main() {                             // must be run as root
    int sec = 1000000;				// make usleep simpler
 
 
-    cout << "ON..." << endl;      
-    digitalWrite (LED_GPIO, HIGH);         // LED is off
+   cout << "ON..." << endl;      
+   digitalWrite (LED_GPIO, HIGH);         // LED is off
    usleep(0.05*sec);                          // sleep for 1 second
 
-    digitalWrite (LED_GPIO, LOW);         // LED is off
-    cout << "OFF..." << endl << endl;
+   digitalWrite (LED_GPIO, LOW);         // LED is off
+   cout << "OFF..." << endl << endl;
    usleep(1*sec);                          // sleep for 1 second
 
    return 0;                             // program ends after 10s
